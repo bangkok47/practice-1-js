@@ -1,6 +1,22 @@
-
 export default function getTopLetter(str) {
-    // Change me!
+  const arr = new Map();
+  let count = 0;
+  let letter = '';
 
-    return "";
+  [...str].filter((el) => {
+    if (!arr.has(el)) {
+      arr.set(el, 1);
+    } else {
+      arr.set(el, arr.get(el) + 1);
+    }
+  });
+
+  arr.forEach((value, key) => {
+    if (value > count) {
+      count = value;
+      letter = key;
+    }
+  });
+
+  return letter;
 }
